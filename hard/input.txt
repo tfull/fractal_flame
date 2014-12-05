@@ -1,0 +1,8 @@
+width                480
+height               480
+density                3
+repeat         100000000
+variation 0 1
+function 1 1.0 0.0 0.0   0.5 0.0 0.0 0.0 0.5 0.0
+function 1 0.0 1.0 0.0   0.5 0.0 0.5 0.0 0.5 0.0
+function 1 0.0 0.0 1.0   0.5 0.0 0.0 0.0 0.5 0.5
