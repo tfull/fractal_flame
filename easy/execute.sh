@@ -1,9 +1,9 @@
 if [ $# -ge 1 ]
 then
-    input=${1##*/}
-    output=image/${input%.*}.ppm
-    image=image/${input%.*}.png
-    scala -cp .:bin fractal.Main < $input > $output
+    tmp=${1##*/}
+    output=image/${tmp%.*}.ppm
+    image=image/${tmp%.*}.png
+    scala -cp .:bin fractal.Main < $1 > $output
     convert $output $image
     open $image
 else

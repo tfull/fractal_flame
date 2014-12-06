@@ -1,3 +1,1 @@
-mkdir -p bin
-cd src
-scalac -d ../bin/ fractal/*
+scalac -d bin/ src/fractal/*
