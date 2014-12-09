@@ -153,7 +153,9 @@ object Render{
             val r = nextIndex(ps, random.nextInt(mv)) //random.nextInt(n)
             val f = functions(r)
             point = f(vws, point)
-            image.blend(point, colors(r))
+            if(i > 20L){
+                image.blend(point, colors(r))
+            }
             i = i + 1L
         }
 

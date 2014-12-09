@@ -4,6 +4,7 @@ import java.util.Random
 
 class Color(val r: Double = 0, val g: Double = 0, val b: Double = 0){
     def +(c: Color) = new Color(r + c.r, g + c.g, b + c.b)
+    def *(k: Double) = new Color(r * k, g * k, b * k)
     def /(k: Double) = new Color(r / k, g / k, b / k)
 }
 
