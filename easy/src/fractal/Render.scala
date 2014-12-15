@@ -47,13 +47,13 @@ object Render{
         res
     }
 
-    def render(args: Array[String]){
+    def render(log_name: String){
         var n = 10
         var (width, height) = (480, 480)
         var density = 3
         var repeat: Long = 100000L
-        var xa = (-1.0, 1.0)
-        var ya = (1.0, -1.0)
+        var xaxis = (-1.0, 1.0)
+        var yaxis = (1.0, -1.0)
         var background: Color = new Color()
 
         val random: Random = new Random()
@@ -63,6 +63,7 @@ object Render{
         var cls: List[Color] = List()
         var vars = Variation.variations
         var weights = makeWeights(vars.length)
+        var varns: Array[Int] = Array()
 
         val buffer = new BufferedReader(new InputStreamReader(System.in))
 
@@ -75,16 +76,19 @@ object Render{
                 sc.next() match{
                     case "variations" => {
                         var vs = List[Point => Point]()
+                        var vns = List[Int]()
                         while(sc.hasNextInt()){
                             var ni = sc.nextInt()
                             if(ni >= 0 && ni < Variation.variations.length){
                                 vs ::= Variation.variations(ni)
+                                vns ::= ni
                             }else{
                                 throw new IOException()
                             }
                         }
                         vars = vs.reverse.toArray
                         weights = makeWeights(vars.length)
+                        varns = vns.reverse.toArray
                     }
                     case "N" => {
                         n = sc.nextInt()
@@ -143,10 +147,34 @@ object Render{
             functions = Function.randomMakeN(n)
         }
 
-        val image = new Image(width, height, density, xa, ya, background)
+        val image = new Image(width, height, density, xaxis, yaxis, background)
         val vws = vars.zip(weights)
         var point = new Point(random.nextDouble(), random.nextDouble())
         val (ps, mv) = makeProbabilities(n)
+
+        if(log_name != null){
+            val log_writer: BufferedWriter = new BufferedWriter(new FileWriter(log_name))
+
+            val (xa, xb) = xaxis
+            val (ya, yb) = yaxis
+
+            log_writer.write("repeat %d\n".format(repeat))
+            log_writer.write("width %d\n".format(width))
+            log_writer.write("height %d\n".format(height))
+            log_writer.write("density %d\n".format(density))
+            log_writer.write("xaxis %.3f %.3f \n".format(xa, xb))
+            log_writer.write("yaxis %.3f %.3f \n".format(ya, yb))
+            log_writer.write("background %.3f %.3f %.3f\n".format(background.r, background.g, background.b))
+            for(i <- 0 until colors.length){
+                log_writer.write("color %d %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f\n".format(ps(i).length, colors(i).r, colors(i).g, colors(i).b, functions(i).a, functions(i).b, functions(i).c, functions(i).d, functions(i).e, functions(i).f))
+            }
+            for(i <- 0 until vws.length){
+                var (_, w) = vws(i)
+                log_writer.write("variation %d %.3f\n".format(varns(i), w))
+            }
+
+            log_writer.close()
+        }
 
         var i: Long = 0L
         while(i < repeat){
