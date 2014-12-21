@@ -88,8 +88,6 @@ void Image::printP3(){
                 }
             }
 
-            std::fprintf(stderr, "%f %f %f\n", c.r, c.g, c.b);
-
             std::printf("%d %d %d\n", reform(c.r), reform(c.g), reform(c.b));
         }
     }

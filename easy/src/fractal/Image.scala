@@ -88,9 +88,13 @@ class Image(val width: Int, val height: Int, val density: Int, val xaxis: (Doubl
                 c /= density * density
 
                 if(f > 0L){
-                    var alpha: Double = math.log(f.toDouble / (density * density).toDouble) / math.log(max_f)
-
-                    c *= math.pow(alpha, (1.0 / gamma))
+                    val favg: Double = math.log(f.toDouble / (density * density).toDouble)
+                    if(favg <= 0.0){
+                        c = new Color()
+                    }else{
+                        var alpha: Double = favg / math.log(max_f)
+                        c *= math.pow(alpha, (1.0 / gamma))
+                    }
                 }
 
                 println("%d %d %d".format(Image.reform(c.r), Image.reform(c.g), Image.reform(c.b)))

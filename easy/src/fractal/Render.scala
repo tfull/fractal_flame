@@ -5,7 +5,7 @@ import java.util.Scanner
 import java.io._
 
 object Render{
-    def makeWeights(n: Int) : Array[Double] = {
+    def makeWeights(n: Int) : (Array[Double], Array[Int]) = {
         val random = new Random()
         var weights = new Array[Double](n)
         var ws = new Array[Int](n)
@@ -19,7 +19,7 @@ object Render{
             for(i <- 0 until n){
                 weights(i) = ws(i).toDouble / s
             }
-            weights
+            (weights, ws)
         }else{
             makeWeights(n)
         }
@@ -62,7 +62,7 @@ object Render{
         var colors = Color.randomColors(n)
         var cls: List[Color] = List()
         var vars = Variation.variations
-        var weights = makeWeights(vars.length)
+        var (weights, ws) = makeWeights(vars.length)
         var varns: Array[Int] = Array()
 
         val buffer = new BufferedReader(new InputStreamReader(System.in))
@@ -87,7 +87,9 @@ object Render{
                             }
                         }
                         vars = vs.reverse.toArray
-                        weights = makeWeights(vars.length)
+                        var (weights_, ws_) = makeWeights(vars.length)
+                        weights = weights_
+                        ws = ws_
                         varns = vns.reverse.toArray
                     }
                     case "N" => {
@@ -166,11 +168,10 @@ object Render{
             log_writer.write("yaxis %.3f %.3f \n".format(ya, yb))
             log_writer.write("background %.3f %.3f %.3f\n".format(background.r, background.g, background.b))
             for(i <- 0 until colors.length){
-                log_writer.write("color %d %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f\n".format(ps(i).length, colors(i).r, colors(i).g, colors(i).b, functions(i).a, functions(i).b, functions(i).c, functions(i).d, functions(i).e, functions(i).f))
+                log_writer.write("function %d %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f %.3f\n".format(ps(i).length, colors(i).r, colors(i).g, colors(i).b, functions(i).a, functions(i).b, functions(i).c, functions(i).d, functions(i).e, functions(i).f))
             }
-            for(i <- 0 until vws.length){
-                var (_, w) = vws(i)
-                log_writer.write("variation %d %.3f\n".format(varns(i), w))
+            for(i <- 0 until ws.length){
+                log_writer.write("variation %d %d\n".format(varns(i), ws(i)))
             }
 
             log_writer.close()
