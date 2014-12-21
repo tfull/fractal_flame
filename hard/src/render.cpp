@@ -118,7 +118,9 @@ int main(int argc, char *argv[]){
         for(int i = 0; i < n; i++){
             if(fcps[i].p.first <= r && r < fcps[i].p.second){
                 point = fcps[i].f.apply(vws, point);
-                image.blend(point, fcps[i].c);
+                if(rep > 20UL){
+                    image.blend(point, fcps[i].c);
+                }
                 break;
             }
         }

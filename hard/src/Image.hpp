@@ -7,6 +7,7 @@
 
 class Image{
     Color **image;
+    long **frequency;
     const int width, height, density;
     const double x0, x1, y0, y1, xmin, xmax, ymin, ymax;
     const int d_width, d_height;
