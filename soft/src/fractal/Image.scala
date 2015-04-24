@@ -69,7 +69,6 @@ class Image(val width: Int, val height: Int, val density: Int, val xaxis: (Doubl
         }
 
         println("P3")
-        println("#")
         println(width + " " + height)
         println(255)
 

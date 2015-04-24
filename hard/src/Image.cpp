@@ -62,7 +62,7 @@ void Image::printP3(){
         }
     }
 
-    std::printf("P3\n#\n%d %d\n255\n", width, height);
+    std::printf("P3\n%d %d\n255\n", width, height);
 
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){

@@ -43,13 +43,13 @@ main <- function(){
 
     print(2)
 
-    estimate <- function(k){
-        return(kde2d(k.x, k.y, c(bandwidth.nrd(k.x), bandwidth.nrd(k.y)), c(width, height)))
+    estimate <- function(x, y){
+        return(kde2d(x, y, c(bandwidth.nrd(x), bandwidth.nrd(y)), c(width, height)))
     }
 
-    red_m <- estimate(red)
-    green_m <- estimate(green)
-    blue_m <- estimate(blue)
+    red_m <- estimate(red.x, red.y)
+    green_m <- estimate(green.x, green.y)
+    blue_m <- estimate(blue.x, blue.y)
 
     arrange <- function(x){
         if(x < 0){
