@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fractal Flame</title>
+  <link rel="stylesheet" href="css/design.css" type="text/css" />
+  <script type="text/javascript" src="js/Point.js"></script>
+  <script type="text/javascript" src="js/Color.js"></script>
+  <script type="text/javascript" src="js/Function.js"></script>
+  <script type="text/javascript" src="js/Variation.js"></script>
+  <script type="text/javascript" src="js/control.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+  <div id="main">
+    <div id="flame">
+      <canvas id="canvas" width="480px" height="480px"></canvas>
+    </div>
+    <div id="operation">
+      <div>
+        <input id="add_new_function" type="button" value="new function" />
+        <select id="repeat">
+          <option>1000</option>
+          <option>2000</option>
+          <option>5000</option>
+          <option>10000</option>
+          <option>20000</option>
+          <option>50000</option>
+          <option>100000</option>
+          <option>200000</option>
+          <option>500000</option>
+          <option>1000000</option>
+        </select>
+        <span id="debug"></span>
+        <input id="draw" type="button" value="draw" />
+      </div>
+    </div>
+    <div id="parameter">
+      <div id="function">
+      </div>
+      <div id="variation">
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+</body>
+</html>

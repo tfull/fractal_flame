@@ -26,7 +26,8 @@ def gamma(x):
         return round(x)
 
 def main(file_i, file_o):
-    h = 0.4
+    n = 5
+    h = 0.7
 
     with open(file_i, "r") as fi, open(file_o, "w") as fo:
         line = getLine(fi)
@@ -55,16 +56,19 @@ def main(file_i, file_o):
 
                 tmp = (0, 0, 0)
 
-                for ni in range(height):
-                    for nj in range(width):
+                ri = range(max(0, i - n), min(height, i + n + 1))
+                rj = range(max(0, j - n), min(width, j + n + 1))
+
+                for ni in ri:
+                    for nj in rj:
                         npi = (ni + 0.5) / height
                         npj = (nj + 0.5) / width
                         k = kernel(((pj - npj) / h, (pi - npi) / h))
                         tmp = (tmp[0] + matrix[ni][nj][0] * k, tmp[1] + matrix[ni][nj][1] * k, tmp[2] + matrix[ni][nj][2] * k)
 
-                fo.write(str(gamma(1 / (height * width * (h ** 2)) * tmp[0])) + " ")
-                fo.write(str(gamma(1 / (height * width * (h ** 2)) * tmp[1])) + " ")
-                fo.write(str(gamma(1 / (height * width * (h ** 2)) * tmp[2])) + "\n")
+                fo.write(str(gamma(1 / (len(ri) * len(rj) * (h ** 2)) * tmp[0])) + " ")
+                fo.write(str(gamma(1 / (len(ri) * len(rj) * (h ** 2)) * tmp[1])) + " ")
+                fo.write(str(gamma(1 / (len(ri) * len(rj) * (h ** 2)) * tmp[2])) + "\n")
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])
