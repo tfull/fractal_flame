@@ -2,9 +2,10 @@
 #define __VARIATION_HPP__
 
 #include "Point.hpp"
-#include <vector>
+#include <string>
 
 typedef Point (*Variation)(Point);
-void setOmega13(bool);
+void initializeParameters();
+void setParameter(std::string, std::string);
 
 #endif

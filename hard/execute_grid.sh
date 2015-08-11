@@ -1,7 +1,7 @@
-if [ $# -eq 3 ]; then
-    ./bin/grid $1 > $2
-    convert $2 $3
-    open $3
-else
-    echo "wrong number of arguments"
-fi
+n=48
+for i in $(seq 0 $n)
+do
+    f=`printf "%02d" $i`
+    ./bin/grid $i < grid_input.txt > image/grid$f.ppm
+    convert image/grid$f.ppm image/grid$f.png
+done

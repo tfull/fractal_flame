@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
+#include <sstream>
 #include "Variation.hpp"
 
 extern Variation variations[];
@@ -15,6 +17,18 @@ int main(int argc, char *argv[]){
     const int size = 480;
     const int grid = 48;
     const int d = 4;
+
+    initializeParameters();
+
+    std::string line;
+
+    while(std::getline(std::cin, line)){
+        std::stringstream ss(line);
+        std::string s, t;
+
+        ss >> s >> t;
+        setParameter(s, t);
+    }
 
     Variation v = variations[n];
 

@@ -27,6 +27,22 @@ Point.prototype.apply = function(f){
     return new Point(f(this.x), f(this.y));
 }
 
+Point.prototype.r = function(){
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+}
+
+Point.prototype.r2 = function(){
+    return this.x * this.x + this.y * this.y;
+}
+
+Point.prototype.theta = function(){
+    return Math.atan(p.x / p.y);
+}
+
+Point.prototype.phi = function(){
+    return Math.atan(p.y / p.x);
+}
+
 Point.prototype.toString = function(){
     return "(" + this.x + "," + this.y + ")";
 }
