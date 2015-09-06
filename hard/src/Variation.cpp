@@ -380,7 +380,7 @@ Point v38(Point p){
     }else{
         t4 = t3 - p2;
     }
-    double k = (p3 * (1.0 / cos(t4)) + p4) / pow(r, p1);
+    double k = (p3 * (1.0 / cos(t4) - 1.0) + p4) / pow(r, p1);
     return p * k;
 }
 
