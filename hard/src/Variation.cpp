@@ -373,7 +373,7 @@ Point v38(Point p){
     double p2 = 2.0 * pi / parameters["ngon.sides"];
     double p3 = parameters["ngon.corners"];
     double p4 = parameters["ngon.circle"];
-    double t3 = p.phi() - p2 * round(p.phi() / p2);
+    double t3 = p.phi() - p2 * floor(p.phi() / p2);
     double t4;
     if(t3 > p2 / 2.0){
         t4 = t3;
@@ -399,7 +399,7 @@ Point v40(Point p){
     double p2 = parameters["rectangles.y"];
     double x = p.x;
     double y = p.y;
-    return Point((2.0 * round(x / p1) + 1) * p1 - x, (2.0 * round(y / p2) + 1) * p2 - y);
+    return Point((2.0 * floor(x / p1) + 1) * p1 - x, (2.0 * floor(y / p2) + 1) * p2 - y);
 }
 
 Point v41(Point p){

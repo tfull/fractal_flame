@@ -315,7 +315,7 @@ object Variation{
         val p4 = parameters("ngon.circle")
         val t3 = phi - p2 * (phi / p2).floor
         val t4 = if(t3 > p2 / 2.0){ t3 }else{ t3 - p2 }
-        val k = (p3 * (1.0 / cos(t4) - 1.0)) / pow(p.r(), p1)
+        val k = (p3 * (1.0 / cos(t4) - 1.0) + p4) / pow(p.r(), p1)
         p * k
     }
 
