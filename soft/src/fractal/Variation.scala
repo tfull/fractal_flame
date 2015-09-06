@@ -29,6 +29,8 @@ object Variation{
         parameters += "perspective.dist" -> 2.0
         parameters += "juliaN.power" -> 2.0
         parameters += "juliaN.dist" -> 2.0
+        parameters += "juliaScope.power" -> 2.0
+        parameters += "juliaScope.dist" -> 2.0
         parameters += "v36" -> 1.5
         parameters += "radialBlur.angle" -> 1.2
         parameters += "pie.slices" -> 5.0
