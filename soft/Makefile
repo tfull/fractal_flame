@@ -1,5 +1,7 @@
 fname = Color Function Image Point Render Variation
 
+all: bin/fractal/Main.class bin/fractal/Grid.class
+
 bin/fractal/Main.class: $(foreach x,$(fname),src/fractal/$(x).scala) src/fractal/Main.scala
 	mkdir -p bin
 	scalac -d bin/ $^
