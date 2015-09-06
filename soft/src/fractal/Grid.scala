@@ -20,6 +20,8 @@ object Grid{
         val grid: Int = 48
         val d: Int = 4
 
+        Variation.initializeParameter()
+
         val buffer = new BufferedReader(new InputStreamReader(System.in))
         var line: String = buffer.readLine()
 
