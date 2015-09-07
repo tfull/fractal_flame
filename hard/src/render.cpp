@@ -40,6 +40,8 @@ int main(int argc, char *argv[]){
     vector<Color> cs;
     Color background;
 
+    initializeParameters();
+
     vector<pair<Variation, double> >vws;
 
     while(getline(cin, line)){
@@ -82,6 +84,10 @@ int main(int argc, char *argv[]){
             double r, g, b;
             ss >> r >> g >> b;
             background = Color(r, g, b);
+        }else if(s == "parameter"){
+            string sk, tk;
+            ss >> sk >> tk;
+            setParameter(sk, tk);
         }else if(s == "#"){
         }else{
             cerr << line_n << ": unknown command" << endl;

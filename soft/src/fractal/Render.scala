@@ -12,7 +12,7 @@ object Render{
 
         var s: Int = 0
         for(i <- 0 until n){
-            ws(i) = random.nextInt(10)
+            ws(i) = random.nextInt(9) + 1
             s += ws(i)
         }
         if(s > 0){
@@ -64,6 +64,8 @@ object Render{
         var vars = Variation.variations
         var (weights, ws) = makeWeights(vars.length)
         var varns: Array[Int] = Array()
+
+        Variation.initializeParameters()
 
         val buffer = new BufferedReader(new InputStreamReader(System.in))
 
@@ -132,6 +134,11 @@ object Render{
                         var b = sc.nextDouble()
                         background = new Color(r, g, b)
                     }
+                    case "parameter" => {
+                        val s = sc.next()
+                        val t = sc.next()
+                        Variation.setParameter(s, t)
+                    }
                     case "#" => {
                     }
                 }
@@ -172,6 +179,17 @@ object Render{
             }
             for(i <- 0 until ws.length){
                 log_writer.write("variation %d %d\n".format(varns(i), ws(i)))
+            }
+            for(k <- Variation.parameters.keys){
+                if(k == "Omega"){
+                    if(Variation.parameters(k) > 0.0){
+                        log_writer.write("parameter Omega pi\n")
+                    }else{
+                        log_writer.write("parameter Omega 0.0\n")
+                    }
+                }else{
+                    log_writer.write("parameter %s %.3f\n".format(k, Variation.parameters(k)))
+                }
             }
 
             log_writer.close()
