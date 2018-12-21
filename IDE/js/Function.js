@@ -12,7 +12,7 @@ Function.prototype.apply = function(p, vws){
 
     for(var i in vws){
         var vw = vws[i];
-        res = res.add(vw.variation(new Point(this.a * p.x + this.b * p.y + this.c, this.d * p.x + this.e * p.y + this.f).scale(vw.weight)));
+        res = res.add(vw.variation(new Point(this.a * p.x + this.b * p.y + this.c, this.d * p.x + this.e * p.y + this.f)).scale(vw.weight));
     }
 
     return res;

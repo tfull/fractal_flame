@@ -36,11 +36,11 @@ Point.prototype.r2 = function(){
 }
 
 Point.prototype.theta = function(){
-    return Math.atan(p.x / p.y);
+    return Math.atan(this.x / this.y);
 }
 
 Point.prototype.phi = function(){
-    return Math.atan(p.y / p.x);
+    return Math.atan(this.y / this.x);
 }
 
 Point.prototype.toString = function(){

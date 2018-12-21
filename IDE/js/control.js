@@ -108,13 +108,11 @@
         for(var i in variations){
             var div = document.createElement("div");
             div.id = "v" + i;
-//            var s = "\\(V_{" + i + "}(x,y) = " + variations[i][1] + "\\)";
             var eq = document.createElement("div");
             eq.class = "equation";
             var img = document.createElement("img");
             img.src = "image/v" + i + ".png";
             eq.appendChild(img);
-//            eq.appendChild(document.createTextNode(s));
             div.appendChild(eq);
             var w = document.createElement("div");
             var span = document.createElement("span");
@@ -199,7 +197,7 @@
             }
             sum += w;
             result.push({
-                variation: variations[div_i][0],
+                variation: variations[div_i],
                 weight: w,
             });
         }

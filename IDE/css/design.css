@@ -35,6 +35,7 @@ div#function > div{
     padding: 5px;
     border: solid 3px blue;
     border-radius: 5px;
+    background-color: #eeeeff;
 }
 
 div#variation{
@@ -47,6 +48,7 @@ div#variation > div{
     padding: 5px;
     border: solid 3px orange;
     border-radius: 5px;
+    background-color: #fff0ee;
 }
 
 div.equation{

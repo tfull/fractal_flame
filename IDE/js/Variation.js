@@ -10,7 +10,7 @@ const variations = (function(){
     }
 
     function v2(p){
-        return p.scale(1 / R2(p));
+        return p.scale(1 / p.r2());
     }
 
     function v3(p){
@@ -73,20 +73,6 @@ const variations = (function(){
         return new Point(r * (p03 + p13), r * (p03 - p13));
     }
 
-    return [
-        [  v0, "(x, y)" ],
-        [  v1, "(\\sin{x}, \\sin{y})" ],
-        [  v2, "\\displaystyle \\frac{1}{r^2}(x, y)" ],
-        [  v3, "(x \\sin(r^2) - y\\cos(r^2), x\\cos(r^2) + y\\sin(r^2))" ],
-        [  v4, {} ],
-        [  v5, {} ],
-        [  v6, {} ],
-        [  v7, {} ],
-        [  v8, {} ],
-        [  v9, {} ],
-        [ v10, {} ],
-        [ v11, {} ],
-        [ v12, {} ],
-    ];
+    return [v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12];
 
 })();
