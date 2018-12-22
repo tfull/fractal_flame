@@ -1,4 +1,6 @@
 (function(){
+    const IMAGE_SCALE = 0.25;
+
     var canvas;
     var context;
     var width;
@@ -109,9 +111,10 @@
             var div = document.createElement("div");
             div.id = "v" + i;
             var eq = document.createElement("div");
-            eq.class = "equation";
+            eq.className = "equation";
             var img = document.createElement("img");
             img.src = "image/v" + i + ".png";
+            img.width = img.width * IMAGE_SCALE;
             eq.appendChild(img);
             div.appendChild(eq);
             var w = document.createElement("div");
