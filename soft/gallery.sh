@@ -1,16 +1,16 @@
 set -e
 
-count=2
+count=10
 
-mkdir -p log
-mkdir -p image
+mkdir -p png ppm txt
 
 for i in `seq 1 ${count}`
 do
     name=`date "+%Y%m%d%H%M%S"`
-    ppm=image/${name}.ppm
-    png=image/${name}.png
-    log=log/${name}.log
+    ppm=ppm/${name}.ppm
+    png=png/${name}.png
+    log=txt/${name}.txt
     python tools/Generator.py | scala -J-Xmx4G -cp .:bin fractal.Main -log $log > $ppm
     convert $ppm $png
+    # python tools/Database.py save --png $png --txt $log
 done
