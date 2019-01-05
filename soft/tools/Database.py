@@ -9,7 +9,7 @@ def create_table(args):
     query = """create table if not exists images (
     id int unsigned auto_increment not null primary key,
     txt mediumtext not null,
-    png blob not null,
+    png mediumblob not null,
     created_at timestamp not null
     ) default character set utf8"""
     cursor.execute(query)
