@@ -10,10 +10,12 @@ def create_table(args):
     id int unsigned auto_increment not null primary key,
     txt mediumtext not null,
     png mediumblob not null,
-    created_at timestamp not null
+    created_at timestamp not null,
+    score tinyint
     ) default character set utf8"""
     cursor.execute(query)
     cursor.execute("alter table images add index index_images_on_created_at(created_at)")
+    cursor.execute("alter table images add index index_images_on_score(score)")
     cursor.close()
     connection.close()
 

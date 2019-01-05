@@ -13,7 +13,9 @@ $rows = array_chunk($output, 5);
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8" />
   <title>Viewer</title>
+  <link rel="stylesheet" href="css/layout.css" type="text/css" />
 </head>
 <body>
   <table>
