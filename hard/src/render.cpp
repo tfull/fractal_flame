@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -21,6 +22,39 @@ struct FCP{
     Color c;
     pair<int, int> p;
 };
+
+struct Setting{
+    string mode;
+};
+
+bool readSetting(Setting *setting, int argc, char **argv){
+    setting->mode = "ppm";
+
+    for(int i = 1; i < argc; i++){
+        if(strcmp(argv[i], "--format") == 0){
+            i++;
+            if(i < argc){
+                if(strcmp(argv[i], "ppm") == 0){
+                    setting->mode = "ppm";
+                }else if(strcmp(argv[i], "tpng") == 0){
+                    setting->mode = "tpng";
+                }else{
+                    cerr << "Argument Error: invalid format" << endl;
+                    cerr << "\t--format [ppm|tpng]" << endl;
+                    return false;
+                }
+            }else{
+                cerr << "Argument Error: no format" << endl;
+                cerr << "\t--format [ppm|tpng]" << endl;
+                return false;
+            }
+        }else{
+            cerr << "Argument Error: no such argument \"" << argv[i] << '"' << endl;
+            return false;
+        }
+    }
+    return true;
+}
 
 int main(int argc, char *argv[]){
     string line;
@@ -39,7 +73,11 @@ int main(int argc, char *argv[]){
     int psum = 0;
     vector<Color> cs;
     Color background;
+    Setting setting;
 
+    if(! readSetting(&setting, argc, argv)){
+        std::exit(1);
+    }
     initializeParameters();
 
     vector<pair<Variation, double> >vws;
@@ -132,7 +170,11 @@ int main(int argc, char *argv[]){
         }
     }
 
-    image.printP3();
+    if(setting.mode == "ppm"){
+        image.printP3();
+    }else{
+        image.printPngText();
+    }
 
     return 0;
 }

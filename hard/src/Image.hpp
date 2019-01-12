@@ -17,6 +17,7 @@ public:
     ~Image();
     void blend(Point &p, Color &c);
     void printP3();
+    void printPngText();
 };
 
 #endif

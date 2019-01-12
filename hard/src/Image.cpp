@@ -50,6 +50,50 @@ int reform(double x){
     return int(x * 255.0 + 0.5);
 }
 
+void Image::printPngText(){
+    const double gamma = 2.2;
+    long max_f = 2L;
+
+    for(int i = 0; i < d_height; i++){
+        for(int j = 0; j < d_width; j++){
+            if(frequency[i][j] > max_f){
+                max_f = frequency[i][j];
+            }
+        }
+    }
+
+    std::printf("PNG Text\n%d %d\n", width, height);
+
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            Color c = Color();
+            long f = 0L;
+            double alpha = 0.0;
+
+            for(int di = 0; di < density; di++){
+                for(int dj = 0; dj < density; dj++){
+                    c = c + image[i * density + di][j * density + dj];
+                    f += frequency[i * density + di][j * density + dj];
+                }
+            }
+
+            c = c / (density * density);
+
+
+            if(f > 0L){
+                double favg = std::log(double(f) / double(density * density));
+                if(favg <= 0.0){
+                    alpha = 0.0;
+                }else{
+                    alpha = std::pow(favg / std::log(max_f), 1.0 / gamma);
+                }
+            }
+
+            std::printf("%d %d %d %d\n", reform(c.r), reform(c.g), reform(c.b), reform(alpha));
+        }
+    }
+}
+
 void Image::printP3(){
     const double gamma = 2.2;
     long max_f = 2L;
