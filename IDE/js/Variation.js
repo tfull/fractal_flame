@@ -1,5 +1,21 @@
 const variations = (function(){
-    var pi = 3.14159265358979323846;
+    const pi = 3.14159265358979323846;
+
+    var parameters = {};
+
+    function initializeParameters(){
+        parameters["a"] = 0.0;
+        parameters["b"] = -0.1;
+        parameters["c"] = -0.42;
+        parameters["d"] = 0.0;
+        parameters["e"] = 0.8;
+        parameters["f"] = 0.5;
+        parameters["Omega"] = 0.0;
+    }
+
+    function setParameter(key, value){
+        parameters[key] = value;
+    }
 
     function v0(p){
         return p;
@@ -71,6 +87,12 @@ const variations = (function(){
         var p03 = Math.pow(Math.sin(theta + r), 3.0);
         var p13 = Math.pow(Math.cos(theta - r), 3.0);
         return new Point(r * (p03 + p13), r * (p03 - p13));
+    }
+
+    function v13(p){
+        var sr = Math.sqrt(p.r());
+        var o = parameters["Omega"];
+        return new Point(Math.cos(p.theta() / 2 + o) * sr, Math.sin(p.theta() / 2 + o) * sr);
     }
 
     return [v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12];
