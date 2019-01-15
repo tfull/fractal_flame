@@ -1,18 +1,38 @@
 <?php
 require_once("function.php");
 
-$pdo = connect_db();
+function command_list(){
+    $pdo = connect_db();
 
-$id = (int)$_GET["id"];
-$value = $_GET["value"];
+    $query = "select id, txt, score from images order by id desc limit 200";
+    $statement = $pdo->prepare($query);
+    $statement->execute();
 
-if(strcmp($value, "N") == 0){
-    $value = null;
-}else{
-    $value = (int)$value;
+    echo json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
 }
 
-$query = "update images set score = :score where id = :id";
-$statement = $pdo->prepare($query);
-$statement->execute(array(":id" => $id, ":score" => $value));
+function command_score(){
+    $pdo = connect_db();
+
+    $id = (int)$_GET["id"];
+    $value = $_GET["value"];
+
+    if(strcmp($value, "N") == 0){
+        $value = null;
+    }else{
+        $value = (int)$value;
+    }
+
+    $query = "update images set score = :score where id = :id";
+    $statement = $pdo->prepare($query);
+    $statement->execute(array(":id" => $id, ":score" => $value));
+}
+
+if(strcmp($_GET["command"], "list") == 0){
+    command_list();
+}else if(strcmp($_GET["command"], "score") == 0){
+    command_score();
+}else{
+    http_response_code(412);
+}
 ?>

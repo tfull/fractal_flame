@@ -27,7 +27,7 @@ $score = is_null($record["score"]) ? null : (int)$record["score"];
   <form name="operation">
     <input type="hidden" name="image_id" value="<?php echo $id; ?>" />
     <select name="score" onChange="evaluate_score(this)">
-      <option value="N"<?php if(is_null($score)){ echo " selected"; } ?>>-</option>
+      <option value="N"<?php if(is_null($score)){ echo " selected"; } ?>>未評価</option>
       <option value="-1"<?php if($score === -1){ echo " selected"; } ?>>-1. bad</option>
       <option value="0"<?php if($score === 0){ echo " selected"; } ?>> 0. normal</option>
       <option value="1"<?php if($score === 1){ echo " selected"; } ?>> 1. good</option>
