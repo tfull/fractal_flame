@@ -22,13 +22,13 @@ function command_list(){
         $score_range = null;
     }
 
-    error_log($score_range);
-
     $query_order = null;
-    if(strcmp($order, "ascending") == 0){
-        $query_order = "order by id asc";
-    }else{
-        $query_order = "order by id desc";
+    if(! is_null($order)){
+        if(strcmp($order, "ascending") == 0){
+            $query_order = "order by id asc";
+        }else if(strcmp($order, "descending") == 0){
+            $query_order = "order by id desc";
+        }
     }
 
     $query_where_array = array();
@@ -48,7 +48,7 @@ function command_list(){
     }
 
     $query_array = array("select id, score from images");
-    if(! empty($query_array)){
+    if(! empty($query_where_array)){
         $query_array[] = "where " . implode(" and ", $query_where_array);
     }
     if(! is_null($query_order)){
