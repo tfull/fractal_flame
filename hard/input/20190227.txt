@@ -1,0 +1,61 @@
+repeat 2000000000
+width 640
+height 640
+density 10
+xaxis -1.000 1.000 
+yaxis 1.000 -1.000 
+background 0.000 0.000 0.000
+function 7 1.000 0.000 0.000 0.150 -0.350 -0.500 0.435 -0.304 -0.261
+function 2 1.000 0.100 0.000 0.278 0.167 -0.556 0.154 -0.231 -0.615
+function 2 1.000 0.200 0.000 0.444 -0.500 -0.056 0.700 0.300 0.000
+function 4 1.000 0.300 0.000 -0.500 -0.375 -0.125 -0.200 -0.400 0.400
+function 6 1.000 0.400 0.000 -0.286 -0.571 0.143 -0.250 0.500 0.250
+function 7 1.000 0.500 0.000 -0.250 -0.300 0.450 -0.063 0.625 0.313
+function 8 1.000 0.600 0.000 -0.571 0.000 -0.429 0.136 0.455 0.409
+function 2 1.000 0.700 0.000 -0.211 -0.474 -0.316 -0.500 0.500 0.000
+function 8 1.000 0.800 0.000 -0.211 -0.526 0.263 0.500 -0.111 -0.389
+function 6 1.000 0.900 0.000 0.600 0.200 -0.200 0.000 0.333 0.667
+function 5 1.000 1.000 0.000 0.294 -0.176 0.529 0.417 -0.375 0.208
+variation 2 7
+variation 8 2
+parameter e 0.800
+parameter Omega 0.0
+parameter v36 1.500
+parameter v45 2.000
+parameter pdj.b 0.300
+parameter b -0.100
+parameter ngon.circle 0.400
+parameter blob.high 1.000
+parameter fan2.y 1.000
+parameter juliaScope.power 2.000
+parameter blob.low 0.500
+parameter perspective.angle 0.500
+parameter v47 2.000
+parameter pie.slices 5.000
+parameter d 0.000
+parameter pdj.d 0.100
+parameter blob.waves 5.000
+parameter v41 1.000
+parameter juliaN.dist 2.000
+parameter v44 3.000
+parameter ngon.corners 0.300
+parameter a 0.000
+parameter pdj.a 0.700
+parameter rectangles.y 0.400
+parameter fan2.x 0.800
+parameter ngon.sides 0.300
+parameter radialBlur.angle 1.200
+parameter curl.c2 0.600
+parameter ngon.power 2.000
+parameter c -0.420
+parameter juliaScope.dist 2.000
+parameter pie.rotation 0.200
+parameter pie.thickness 0.200
+parameter pdj.c 0.600
+parameter v46 2.000
+parameter perspective.dist 2.000
+parameter f 0.500
+parameter rectangles.x 0.800
+parameter curl.c1 0.400
+parameter juliaN.power 2.000
+parameter rings2.val 0.500
