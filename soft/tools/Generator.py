@@ -1,6 +1,6 @@
 import random
 
-REPEAT_COUNT = 1000000
+REPEAT_COUNT = 30000000
 SIZE = 360
 DENSITY = 2
 
@@ -11,7 +11,7 @@ def get_variations():
     return variations[:count]
 
 def get_colors():
-    count = random.randint(3, 100)
+    count = random.randint(3, 40)
     rand = random.random()
     return [[random.random(), random.random(), random.random()] for i in range(count)]
 

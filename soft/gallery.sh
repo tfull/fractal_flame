@@ -1,9 +1,10 @@
 set -e
 db_user=${user:-user}
 db_password=${password:-password}
+count=${count:-100}
 
 dbflag=true
-count=100
+#count=100
 
 mkdir -p png ppm txt
 
