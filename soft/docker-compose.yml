@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+    gallery:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        user: gallery
+        command: bash
+        working_dir: /home/gallery
+        tty: true
+        volumes:
+            - ./tools:/home/gallery/tools
+            - ./gallery.sh:/home/gallery/gallery.sh
+            - ./Makefile:/home/gallery/Makefile
+            - ./src:/home/gallery/src
+        environment:
+            db_host: # host
+            db_user: # user
+            db_password: # password
+            count: 100
+            python_command: python3
