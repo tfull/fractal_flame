@@ -7,14 +7,14 @@ python_command=${python_command:-python3}
 
 dbflag=true
 
-mkdir -p png ppm txt
+mkdir -p gallery_png gallery_ppm gallery_txt
 
 for i in `seq 1 ${count}`
 do
     name=`date "+%Y%m%d%H%M%S"`
-    ppm=ppm/${name}.ppm
-    png=png/${name}.png
-    log=txt/${name}.txt
+    ppm=gallery_ppm/${name}.ppm
+    png=gallery_png/${name}.png
+    log=gallery_txt/${name}.txt
     $python_command tools/Generator.py | scala -J-Xmx4G -cp .:bin fractal.Main -log $log > $ppm
     convert $ppm $png
     if [ $dbflag ]

@@ -3,7 +3,7 @@ services:
     gallery:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: soft/Dockerfile
         user: gallery
         command: bash
         working_dir: /home/gallery
