@@ -17,7 +17,7 @@ do
     log=gallery_txt/${name}.txt
     $python_command tools/Generator.py | scala -J-Xmx4G -cp .:bin fractal.Main -log $log > $ppm
     convert $ppm $png
-    if [ $dbflag ]
+    if [ $db_valid = "true" ]
     then
         $python_command tools/Database.py save --host $db_host --user $db_user --password $db_password --png $png --txt $log
         rm $ppm $png $log

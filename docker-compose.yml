@@ -1,19 +1,19 @@
 version: "3.7"
 services:
-    gallery:
+    soft:
         build:
             context: .
             dockerfile: soft/Dockerfile
-        user: gallery
+        user: soft
         command: bash
-        working_dir: /home/gallery
+        working_dir: /home/soft
         tty: true
         volumes:
-            - ./tools:/home/gallery/tools
-            - ./gallery.sh:/home/gallery/gallery.sh
-            - ./Makefile:/home/gallery/Makefile
-            - ./src:/home/gallery/src
+            - ./soft/png:/home/soft/png
+            - ./soft/txt:/home/soft/txt
+            - ./soft/input:/home/soft/input
         environment:
+            db_valid: "false"
             db_host: # host
             db_user: # user
             db_password: # password

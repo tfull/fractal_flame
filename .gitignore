@@ -1,1 +1,3 @@
-docker-compose.yml
+docker-compose.override.yml
+soft/png/*.png
+soft/txt/*.txt
