@@ -1,21 +1,50 @@
 version: "3.7"
+
 services:
     soft:
         build:
-            context: .
-            dockerfile: soft/Dockerfile
+            context: soft
+            dockerfile: Dockerfile
         user: soft
         command: bash
         working_dir: /home/soft
         tty: true
+        environment:
+            db_valid: "true"
+            db_host: mysql
+            db_user: docker
+            db_password: docker
+            count: 100
+            python_command: python3
         volumes:
             - ./soft/png:/home/soft/png
             - ./soft/txt:/home/soft/txt
             - ./soft/input:/home/soft/input
+
+    mysql:
+        image: mysql:5.7
         environment:
-            db_valid: "false"
-            db_host: # host
-            db_user: # user
-            db_password: # password
-            count: 100
-            python_command: python3
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: fractal_flame
+            MYSQL_USER: docker
+            MYSQL_PASSWORD: docker
+            TZ: 'Asia/Tokyo'
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - storage:/var/lib/mysql
+
+    view:
+        build:
+            context: view
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: mysql
+            DB_USER: docker
+            DB_PASSWORD: docker
+        command: apachectl -D FOREGROUND
+        ports:
+            - "8080:80"
+
+volumes:
+    storage:
+        driver: local

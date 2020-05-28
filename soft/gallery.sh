@@ -1,16 +1,16 @@
 set -e
+db_valid=${db_valid:-"false"}
 db_host=${db_host:-localhost}
 db_user=${db_user:-user}
 db_password=${db_password:-password}
 count=${count:-100}
 python_command=${python_command:-python3}
 
-dbflag=true
-
 mkdir -p gallery_png gallery_ppm gallery_txt
 
 for i in `seq 1 ${count}`
 do
+    echo "\r Gallery $((i - 1)) / $count"
     name=`date "+%Y%m%d%H%M%S"`
     ppm=gallery_ppm/${name}.ppm
     png=gallery_png/${name}.png

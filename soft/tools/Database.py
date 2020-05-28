@@ -29,6 +29,7 @@ def save_image(args):
     query = "insert into images (png, txt) values (%s, %s)"
     cursor.execute(query, (read_file(args.png, "rb"), read_file(args.txt, "r")))
     cursor.close()
+    connection.commit()
     connection.close()
 
 if __name__ == '__main__':
