@@ -8,13 +8,15 @@ python_command=${python_command:-python3}
 
 mkdir -p gallery_png gallery_ppm gallery_txt
 
+ps=$$
+
 for i in `seq 1 ${count}`
 do
-    echo "\r Gallery $((i - 1)) / $count"
+    echo "Gallery $((i - 1)) / $count"
     name=`date "+%Y%m%d%H%M%S"`
-    ppm=gallery_ppm/${name}.ppm
-    png=gallery_png/${name}.png
-    log=gallery_txt/${name}.txt
+    ppm=gallery_ppm/${ps}-${name}.ppm
+    png=gallery_png/${ps}-${name}.png
+    log=gallery_txt/${ps}-${name}.txt
     $python_command tools/Generator.py | scala -J-Xmx4G -cp .:bin fractal.Main -log $log > $ppm
     convert $ppm $png
     if [ $db_valid = "true" ]
@@ -23,3 +25,5 @@ do
         rm $ppm $png $log
     fi
 done
+
+echo "Gallery $count / $count"
