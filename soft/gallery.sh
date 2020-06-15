@@ -12,7 +12,7 @@ ps=$$
 
 for i in `seq 1 ${count}`
 do
-    echo "Gallery $((i - 1)) / $count"
+    printf "\r Gallery $((i - 1)) / $count"
     name=`date "+%Y%m%d%H%M%S"`
     ppm=gallery_ppm/${ps}-${name}.ppm
     png=gallery_png/${ps}-${name}.png
@@ -26,4 +26,4 @@ do
     fi
 done
 
-echo "Gallery $count / $count"
+printf "\rGallery complete ($count)"
