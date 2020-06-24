@@ -26,4 +26,4 @@ do
     fi
 done
 
-printf "\rGallery complete ($count)"
+printf "\rGallery complete ($count)\n"
