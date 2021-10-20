@@ -36,6 +36,6 @@ $3は出力用の PNG ファイル名
 標準出力に PPM データが出力される。
 
 ### バイナリの削除
-`bash clean`  
+`bash clean.sh`  
 あるいは  
 `make clean`

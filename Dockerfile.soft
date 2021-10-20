@@ -14,16 +14,16 @@ RUN apt-get -y install imagemagick
 
 RUN useradd -m soft
 
-COPY src /home/soft/src
-COPY tools /home/soft/tools
-COPY Makefile /home/soft/
-COPY *.sh /home/soft/
-COPY requirements.txt /home/soft/
+COPY soft/src /home/soft/src
+COPY soft/tools /home/soft/tools
+COPY soft/Makefile /home/soft/
+COPY soft/*.sh /home/soft/
+COPY soft/requirements.txt /tmp/requirements.txt
+
+RUN pip3 install -r /tmp/requirements.txt
 
 RUN chown -R soft:soft /home/soft
 
 USER soft
 WORKDIR /home/soft
-
-RUN pip3 install -r requirements.txt
 RUN make

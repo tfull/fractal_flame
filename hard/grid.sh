@@ -1,5 +1,4 @@
-n=48
-for i in $(seq 0 $n)
+for i in $(seq 0 48)
 do
     f=`printf "%02d" $i`
     ./bin/grid $i < grid_input.txt > image/grid$f.ppm

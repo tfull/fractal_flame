@@ -1,10 +1,11 @@
 version: "3.7"
 
 services:
+
     soft:
         build:
-            context: soft
-            dockerfile: Dockerfile
+            context: .
+            dockerfile: Dockerfile.soft
         user: soft
         command: bash
         working_dir: /home/soft
@@ -21,6 +22,19 @@ services:
             - ./soft/txt:/home/soft/txt
             - ./soft/input:/home/soft/input
 
+    hard:
+        build:
+            context: .
+            dockerfile: Dockerfile.hard
+        user: hard
+        command: ruby server.rb -o 0.0.0.0
+        working_dir: /home/hard/gui
+        tty: true
+        ports:
+            - "4567:4567"
+        volumes:
+            - ./hard/gui:/home/hard/gui
+
     mysql:
         image: mysql:5.7
         environment:
@@ -35,8 +49,8 @@ services:
 
     view:
         build:
-            context: view
-            dockerfile: Dockerfile
+            context: .
+            dockerfile: Dockerfile.view
         environment:
             DB_HOST: mysql
             DB_USER: docker

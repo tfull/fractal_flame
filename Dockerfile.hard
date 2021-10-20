@@ -1,0 +1,26 @@
+FROM ruby:2.6.5
+
+# ENV DEBIAN_FRONTEND=noninteractive
+
+RUN useradd -m hard
+
+RUN apt-get update
+
+RUN apt-get install -y \
+    build-essential \
+    cmake \
+    clang \
+    libssl-dev \
+    git \
+    libreadline-dev \
+    zlib1g-dev \
+    wget
+
+RUN apt-get install -y imagemagick
+
+RUN gem install sinatra sinatra-reloader thin
+
+COPY --chown=hard:hard hard/src /home/hard/src
+COPY --chown=hard:hard hard/Makefile /home/hard/Makefile
+WORKDIR /home/hard
+RUN make

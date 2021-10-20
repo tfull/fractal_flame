@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fractal Flame</title>
+  <link rel="stylesheet" href="/css/design.css" type="text/css" />
+  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/js/index.js"></script>
+</head>
+<body>
+  <div id="main">
+    <div id="flame">
+      <img id="canvas" width="480px" height="480px" />
+    </div>
+    <div id="operation">
+      <div>
+        <input id="add_new_function" type="button" value="new function" />
+        <input id="repeat" type="number" min=1000 max=1000000000 value=1000000 />
+        <span id="debug"></span>
+        <input id="draw" type="button" value="draw" />
+      </div>
+      <div>
+        <textarea id="input"></textarea>
+        <input id="load" type="button" value="load" />
+      </div>
+      <div id="parameter"></div>
+    </div>
+    <div id="coefficient">
+      <div id="function"></div>
+      <div id="variation"></div>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+</body>
+</html>

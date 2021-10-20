@@ -75,6 +75,7 @@ void initializeParameters(){
 void setParameter(string s, string fs){
     stringstream ss(fs);
 
+    /*
     if(s == "Omega"){
         string t;
         ss >> t;
@@ -83,7 +84,9 @@ void setParameter(string s, string fs){
         }else{
             parameters["Omega"] = 0.0;
         }
-    }else if(parameters.count(s)){
+    }else */
+
+    if(parameters.count(s)){
         ss >> parameters[s];
     }else{
         cerr << "no such variable: " << s << endl;

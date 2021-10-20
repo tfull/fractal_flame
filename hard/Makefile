@@ -13,6 +13,7 @@ bin/render: $(axes) $(others) bin/render.o
 	$(cppc) -o $@ $^
 
 bin/%.o: src/%.cpp
+	mkdir -p bin
 	$(cppc) $(options) -c -o $@ $<
 
 clean:

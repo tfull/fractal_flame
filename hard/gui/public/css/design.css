@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+html{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Hiragino Mincho Pro";
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+span {
+    font-style: italic;
+    margin: 0.5rem;
+}
+
+#canvas {
+    display: block;
+}
+
+#main{
+    width: 1200px;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+#flame{
+    width: 480px;
+    margin: auto;
+    padding: 10px;
+}
+
+#operation{
+    padding: 5px;
+    background-color: rgb(196, 255, 196);
+    border: solid 3px green;
+    border-radius: 5px;
+}
+
+#function{
+    float: left;
+    width: 720px;
+}
+
+.function {
+    margin: 5px;
+    padding: 5px;
+    border: solid 3px blue;
+    border-radius: 5px;
+    background-color: #f0f0ff;
+    height: 100px;
+}
+
+.palette {
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+
+#parameter span {
+    font-size: 0.8rem;
+}
+
+#variation{
+    float: right;
+    width: 480px;
+}
+
+.variation {
+    margin: 5px;
+    padding: 5px;
+    height: 100px;
+    border: solid 3px orange;
+    border-radius: 5px;
+    background-color: #fff8f0;
+}
+
+.variation span {
+    font-size: 0.8rem;
+}
+
+.coefficient {
+    width: 64px;
+}
+
+.color {
+    width: 48px;
+}
+
+.weight {
+    width: 64px;
+}
+
+img.grid {
+    width: 100px;
+    height: 100px;
+}
+
+#variation img {
+    float: left;
+}
+
+#parameter input {
+    width: 32px;
+}
+
+.variation input {
+    width: 64px;
+}
