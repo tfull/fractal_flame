@@ -1,7 +1,7 @@
 # fractal flame (hard)
 C++ で記述されている。
 
-## easy との違い
+## hard との違い
 1. `F(x, y) = (ax+by+c,dx+ey+f)`
 のパラメータを設定する必要がある。
 2. variations の確率を設定する必要がある。
@@ -39,3 +39,17 @@ $3は出力用の PNG ファイル名
 `bash clean.sh`  
 あるいは  
 `make clean`
+
+## GUI
+
+`gui/` 下で次を実行し、ブラウザで `localhost:4567` にアクセスする。
+
+```
+ruby server.rb
+```
+
+## Reference
+
+- カラーセラピーライフ
+  - https://www.i-iro.com/dic/
+  -  (2021/10/23 アクセス)

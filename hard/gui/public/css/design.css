@@ -93,6 +93,10 @@ span {
     width: 64px;
 }
 
+.weighted {
+    background-color: rgb(255, 202, 104);
+}
+
 img.grid {
     width: 100px;
     height: 100px;
@@ -104,6 +108,16 @@ img.grid {
 
 #parameter input {
     width: 32px;
+}
+
+#parameter input[type="number"]::-webkit-outer-spin-button,
+#parameter input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#parameter input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 .variation input {

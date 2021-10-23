@@ -171,6 +171,8 @@ post "/api/draw" do
 
   data = File.read png
 
+  `rm #{txt} #{ppm} #{png}`
+
   content_type "image/png"
   Base64.encode64 data
 end
